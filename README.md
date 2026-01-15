@@ -6,7 +6,8 @@ For now, this repo only contains a few configs I actually changed (fish, shell-r
 
 Prerequisite (Linux):
 1. https://github.com/SHORiN-KiWATA/ShorinArchExperience-ArchlinuxGuide/wiki/%E4%B8%80%E9%94%AE%E9%85%8D%E7%BD%AE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83
-2. lolcat,
+2. 
 
-Prerequisite (Mac):
-1. yazi, kitty, fish,
+Prerequisite (General):
+1. https://github.com/xmgnew/lolcat
+2. 
