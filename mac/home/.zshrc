@@ -24,3 +24,5 @@ if [[ -o interactive ]] \
     && command -v lolcat >/dev/null; then
     fastfetch | lolcat
 fi
+
+alias f='fastfetch | lolcat'
