@@ -10,4 +10,5 @@ Prerequisite (Linux):
 
 Prerequisite (General):
 1. https://github.com/xmgnew/lolcat
-2. 
+2. vim-plug
+3. 
