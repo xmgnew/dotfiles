@@ -145,24 +145,6 @@ let g:NERDTreeQuitOnOpen = 0
 " 高亮当前文件
 let g:NERDTreeHighlightCursorline = 1
 
-" ================================
-" 启动 / 打开文件时自动打开并定位 NERDTree
-" ================================
-
-" 如果是用 vim 打开一个文件
-" 自动打开 NERDTree，并定位到该文件
-autocmd VimEnter * if argc() == 1 && filereadable(argv()[0]) |
-      \ execute 'NERDTreeFind' |
-      \ wincmd p |
-      \ endif
-
-" 如果是 vim 直接打开一个目录
-" 自动打开 NERDTree
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) |
-      \ execute 'NERDTree' argv()[0] |
-      \ wincmd p |
-      \ endif
-
 " ===== 让 signcolumn 融入背景，不再像白边 =====
 if exists('+termguicolors') && &termguicolors
   hi SignColumn guibg=NONE
