@@ -1,0 +1,149 @@
+# ============================================================
+# Starship - Tokyo Night
+# ============================================================
+
+format = """
+[╭─](fg:#565F89)\
+$os\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$c\
+$cpp\
+$python\
+$nodejs\
+$rust\
+$cmd_duration
+[╰─](fg:#565F89)$character"""
+
+add_newline = true
+
+palette = "tokyo_night"
+
+[palettes.tokyo_night]
+background = "#1A1B26"
+foreground = "#C0CAF5"
+comment = "#565F89"
+blue = "#7AA2F7"
+cyan = "#7DCFFF"
+purple = "#BB9AF7"
+green = "#9ECE6A"
+yellow = "#E0AF68"
+red = "#F7768E"
+orange = "#FF9E64"
+
+
+# ─────────────────────────────
+# OS
+# ─────────────────────────────
+
+[os]
+disabled = false
+style = "bold blue"
+format = "[$symbol ]($style)"
+
+[os.symbols]
+Debian = ""
+Arch = ""
+Ubuntu = ""
+Windows = "󰍲"
+
+
+# ─────────────────────────────
+# User / Host
+# ─────────────────────────────
+
+[username]
+show_always = true
+style_user = "bold purple"
+style_root = "bold red"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "cyan"
+format = "[@$hostname ]($style)"
+
+
+# ─────────────────────────────
+# Directory
+# ─────────────────────────────
+
+[directory]
+style = "bold blue"
+format = "[  $path ]($style)"
+truncation_length = 4
+truncate_to_repo = false
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"projects" = "󰲋 "
+
+
+# ─────────────────────────────
+# Git
+# ─────────────────────────────
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$branch ]($style)"
+
+[git_status]
+style = "yellow"
+format = "[$all_status$ahead_behind ]($style)"
+
+
+# ─────────────────────────────
+# Languages
+# ─────────────────────────────
+
+[c]
+symbol = " "
+style = "blue"
+format = "[$symbol($version )]($style)"
+
+[cpp]
+symbol = " "
+style = "blue"
+format = "[$symbol($version )]($style)"
+
+[python]
+symbol = " "
+style = "yellow"
+format = "[$symbol$pyenv_prefix($version )]($style)"
+
+[nodejs]
+symbol = " "
+style = "green"
+format = "[$symbol($version )]($style)"
+
+[rust]
+symbol = " "
+style = "orange"
+format = "[$symbol($version )]($style)"
+
+
+# ─────────────────────────────
+# Command duration
+# ─────────────────────────────
+
+[cmd_duration]
+min_time = 1000
+style = "yellow"
+format = "[󱎫 $duration ]($style)"
+
+
+# ─────────────────────────────
+# Prompt character
+# ─────────────────────────────
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold purple)"
