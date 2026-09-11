@@ -27,3 +27,6 @@ fi
 
 alias f='fastfetch | lolcat'
 alias y='yazi .'
+
+export EDITOR=nvim
+export VISUAL=nvim

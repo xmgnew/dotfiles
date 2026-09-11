@@ -27,3 +27,21 @@ end
 # Import PATH from zsh
 set -l zsh_path (zsh -lc 'echo $PATH')
 set -gx PATH (string split ":" -- $zsh_path)
+
+# ==========================================
+# Yazi wrapper
+# ==========================================
+
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+
+    if read -z cwd <"$tmp"; and test -n "$cwd"; and test "$cwd" != "$PWD"
+        builtin cd -- "$cwd"
+    end
+
+    rm -f -- "$tmp"
+end
+
+set -gx EDITOR nvim
+set -gx VISUAL nvim
