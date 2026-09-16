@@ -231,13 +231,33 @@ background_job >/dev/null 2>&1 &
 
 if [ -n "$SELECTED_IMG" ] && [ -f "$SELECTED_IMG" ]; then
 
+    # Get original image dimensions
+    IMG_WIDTH=$(sips -g pixelWidth "$SELECTED_IMG" 2>/dev/null | awk '/pixelWidth/ {print $2}')
+    IMG_HEIGHT=$(sips -g pixelHeight "$SELECTED_IMG" 2>/dev/null | awk '/pixelHeight/ {print $2}')
+
+    # Maximum display size
+    MAX_LOGO_WIDTH=30
+    MAX_LOGO_HEIGHT=26
+
+    # First, calculate size based on maximum width
+    LOGO_WIDTH=$MAX_LOGO_WIDTH
+    LOGO_HEIGHT=$(( LOGO_WIDTH * IMG_HEIGHT * 10 / IMG_WIDTH / 19 ))
+
+    # If the image becomes too tall, limit height instead
+    if [ "$LOGO_HEIGHT" -gt "$MAX_LOGO_HEIGHT" ]; then
+        LOGO_HEIGHT=$MAX_LOGO_HEIGHT
+        LOGO_WIDTH=$(( LOGO_HEIGHT * IMG_WIDTH * 19 / IMG_HEIGHT / 10 ))
+    fi
+    
+
     fastfetch \
-        --logo "$SELECTED_IMG" \
-        --logo-type kitty-icat \
-        --logo-width 30 \
-        --logo-height 28 \
+        --kitty-direct "$SELECTED_IMG" \
+        --logo-width "$LOGO_WIDTH" \
+        --logo-height "$LOGO_HEIGHT" \
         --logo-preserve-aspect-ratio true \
-        --show-errors \
+        --logo-padding-top 2 \
+        --logo-padding-left 2 \
+    #    --show-errors \
         "$@"
 
     # Archive image after use
